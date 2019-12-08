@@ -1,0 +1,23 @@
+.main{
+  background-color: red;
+  height: 70%;
+  min-height: 662px;
+  display: flex;
+}
+
+.main > nav {
+background: gray;
+}
+
+.main > section {
+  width: 100%;
+background: yellow;
+}
+
+.main > section > div{
+  width: 100%;
+background: hotpink;
+display: flex;
+justify-content: space-around;
+height: 10%;
+}
