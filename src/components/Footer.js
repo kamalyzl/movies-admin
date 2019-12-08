@@ -1,14 +1,13 @@
 import React from 'react'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faAppleAlt } from '@fortawesome/free-solid-svg-icons'
 import '../css/Footer.css'
 
-function Footer () {
+const Footer = () => {
   return (
     <footer className='footer'>
       <div>
-        <i className='fa fa-car' />
-        <i className='fa fa-car' />
-        <i className='fa fa-car' />
-        <i className='fa fa-car' />
+        <FontAwesomeIcon icon={faAppleAlt} />
       </div>
     </footer>
   )

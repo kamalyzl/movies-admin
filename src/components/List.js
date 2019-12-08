@@ -1,14 +1,22 @@
 import React from 'react'
-import 'bootstrap/dist/css/bootstrap.min.css'
-import '../css/Header.css'
-function List ({ id, name, datePublic, status, action }) {
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faEdit, faTrash } from '@fortawesome/free-solid-svg-icons'
+
+const List = ({ id, name, datePublic, status, onClickEdit, onClickTrash }) => {
   return (
     <tr>
       <td>{id}</td>
       <td>{name}</td>
       <td>{datePublic}</td>
       <td>{status}</td>
-      <td>{action}</td>
+      <td>
+        <a href='#'>
+          <FontAwesomeIcon icon={faEdit} onClick={onClickEdit} />
+        </a>
+        <a href='#'>
+          <FontAwesomeIcon icon={faTrash} onClick={onClickTrash} />
+        </a>
+      </td>
     </tr>
   )
 }

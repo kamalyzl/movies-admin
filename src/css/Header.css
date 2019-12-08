@@ -1,10 +1,9 @@
 .header {
-  height: 15%;
+  height: 10vh;
   width: 100vw;
   display: flex;
   justify-content: space-around;
   align-items: center;
-  min-height: 142px;
 }
 .icon {
   font-size: 2rem;

@@ -3,4 +3,12 @@
   height: 100vh;
 }
 
+a {
+  color: black;
+}
+
+a:hover {
+  text-decoration: none;
+  color: coral;
+} 
 
