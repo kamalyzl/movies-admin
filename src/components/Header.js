@@ -4,11 +4,13 @@ function Header () {
   return (
     <header className='header'>
       <div>
-      Plataforma de Peliculas
+        <h1>
+        Plataforma de Peliculas
+        </h1>
       </div>
       <span className='icon'>
         <span className='subIcon'>
-          <i class='fa fa-car' />
+          <i className='fa fa-car' />
         </span>
       </span>
     </header>

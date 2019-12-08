@@ -5,10 +5,10 @@ function Footer () {
   return (
     <footer className='footer'>
       <div>
-        <i class='fa fa-car' />
-        <i class='fa fa-car' />
-        <i class='fa fa-car' />
-        <i class='fa fa-car' />
+        <i className='fa fa-car' />
+        <i className='fa fa-car' />
+        <i className='fa fa-car' />
+        <i className='fa fa-car' />
       </div>
     </footer>
   )

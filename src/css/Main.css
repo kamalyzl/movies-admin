@@ -1,23 +1,41 @@
 .main{
-  background-color: red;
-  height: 70%;
+  height: 75%;
   min-height: 662px;
   display: flex;
 }
 
 .main > nav {
-background: gray;
+  text-decoration: none;
+  border-width: 1px;
+  border-style: solid;
+  border-color: black;
+}
+
+.nav-ul{
+  padding: 0;
+ 
+
+}
+.nav-ul li{
+  list-style: none;
+  border-width: 1px;
+  border-style: solid;
+  border-color: black;
+  padding: 1rem;
+  text-align: center;
 }
 
 .main > section {
   width: 100%;
-background: yellow;
+  background: yellow;
 }
 
-.main > section > div{
+.first {
   width: 100%;
-background: hotpink;
-display: flex;
-justify-content: space-around;
-height: 10%;
+  background: hotpink;
+  display: flex;
+  justify-content: space-around;
+  align-items: baseline;
 }
+
+ 

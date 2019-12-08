@@ -1,8 +1,8 @@
 .footer{
-  background-color:gold;
+  background-color:gray;
   justify-content: space-around;
   width: 100vw;
-  height: 15%;
+  height: 10%;
   align-items: center;
   display: flex;
 }
@@ -10,6 +10,6 @@
 .footer > div {
   width: 40%;
   display: flex;
-  font-size: 2rem;
+  font-size: 1rem;
   justify-content: space-around;
 }
