@@ -1,12 +1,13 @@
 import React from 'react'
 import { Table } from 'react-bootstrap'
 import nanoid from 'nanoid'
+import ReactLoading from 'react-loading'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import List from './List'
 
-const id = nanoid()
+const id = nanoid(5)
 const Tables = ({ data, handleEdit, handleTrash }) => {
-  return (
+  return data.length > 0 ? (
     <div className='table-list'>
       <Table striped bordered hover responsive>
         <thead>
@@ -23,13 +24,13 @@ const Tables = ({ data, handleEdit, handleTrash }) => {
             data && data.map((item) => {
               return (
                 <List
-                  key={id}
+                  key={item.id}
                   id={item.id}
                   name={item.name}
                   status={item.status}
-                  datePublic={item.fpublicaction}
-                  onClickEdit={handleEdit}
-                  onClickTrash={handleTrash}
+                  datePublic={item.date}
+                  onClickEdit={() => handleEdit(item)}
+                  onClickTrash={() => handleTrash(item)}
                 />
               )
             })
@@ -37,7 +38,7 @@ const Tables = ({ data, handleEdit, handleTrash }) => {
         </tbody>
       </Table>
     </div>
-  )
+  ) : <ReactLoading key={id} color='red' />
 }
 
 export default Tables

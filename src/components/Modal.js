@@ -1,19 +1,18 @@
 import { Modal, Button } from 'react-bootstrap'
 import React from 'react'
-const Modals = ({ show, onHide }) => {
+const Modals = ({ show, onHide, saveDate, children }) => {
   return (
     <>
       <Modal show={show} onHide={onHide}>
         <Modal.Header closeButton>
           <Modal.Title>Modal heading</Modal.Title>
         </Modal.Header>
-        <Modal.Body>Woohoo, you're reading this text in a modal!</Modal.Body>
+        <Modal.Body>
+          {children}
+        </Modal.Body>
         <Modal.Footer>
-          <Button variant='secondary' onClick={onHide}>
-            Close
-          </Button>
-          <Button variant='primary' onClick={onHide}>
-            Save Changes
+          <Button variant='primary' onClick={saveDate}>
+            Guardar
           </Button>
         </Modal.Footer>
       </Modal>
