@@ -5,9 +5,9 @@ import Footer from '../components/Footer'
 import Aside from '../components/Aside'
 import Table from '../components/Table'
 import RenderModal from '../components/RenderModal'
+import {dataListMovies} from '../data/movies'
 import '../css/Home.css'
 
-const date = new Date()
 const TYPE_ACTION = Object.freeze({
   CREATE: 'create',
   UPDATE: 'update'
@@ -23,20 +23,7 @@ class Home extends React.Component {
       date: '',
       id: '',
       status: 'Activo',
-      listMovies: [
-        {
-          id: nanoid(5),
-          name: 'Jason Bourne',
-          date: date.toISOString().slice(0,10),
-          status: 'Inactivo'
-        },
-        {
-          id: nanoid(5),
-          name: 'Alicia en el pais de las maravillas',
-          date: date.toISOString().slice(0,10),
-          status: 'Activo'
-        }
-      ]
+      listMovies: dataListMovies
      }
   }
   handleShow = () => {
@@ -83,7 +70,7 @@ class Home extends React.Component {
     const removedListMovies = listMovies.filter(( obj ) =>  {
       return obj.id !== item.id;
   });
-    this.setState((state)=>{ 
+    this.setState(()=>{ 
       return {
         show:false, 
         listMovies: removedListMovies
@@ -92,7 +79,7 @@ class Home extends React.Component {
   }
   updateItem = (item) => {
     const {name, date, status, id} = item
-    this.setState((state) => { 
+    this.setState(() => { 
       return {
         show:true, 
         type: TYPE_ACTION.UPDATE,
@@ -104,8 +91,6 @@ class Home extends React.Component {
     })
   }
 
-
-
   render () {
     const {show, name, status, date, listMovies, type} = this.state
     return (
@@ -116,7 +101,7 @@ class Home extends React.Component {
           <section>
             <div className='first'>
               <h2>Peliculas</h2>
-              <button onClick={this.handleShow}>Nueva Pelicula</button>
+              <button className='btn-primary' onClick={this.handleShow}>Nueva Pelicula</button>
               {
                 type === TYPE_ACTION.CREATE ? (
                   <RenderModal 

@@ -9,6 +9,11 @@ a {
 
 a:hover {
   text-decoration: none;
-  color: coral;
+  color: #007bff;
 } 
+
+.btn-primary {
+  border-radius: 15px;
+  padding: 5px 20px;
+}
 
