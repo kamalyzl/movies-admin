@@ -4,10 +4,14 @@ import Header from '../components/Header'
 import Footer from '../components/Footer'
 import Aside from '../components/Aside'
 import Table from '../components/Table'
-import Modals from '../components/Modal'
+import RenderModal from '../components/RenderModal'
 import '../css/Home.css'
 
 const date = new Date()
+const TYPE_ACTION = Object.freeze({
+  CREATE: 'create',
+  UPDATE: 'update'
+})
 
 class Home extends React.Component {
   constructor (props) {
@@ -37,7 +41,7 @@ class Home extends React.Component {
   }
   handleShow = () => {
     this.setState((state, props) => {
-      return { show: !state.show, name: '', date: '', status: 'Activo', type: 'create'}
+      return { show: !state.show, name: '', date: '', status: 'Activo', type: TYPE_ACTION.CREATE}
     })
   }
   
@@ -49,7 +53,7 @@ class Home extends React.Component {
     const id = nanoid(5)
     const {name, status, date, type, listMovies, id: idItem} = this.state
  
-    if (type === 'create') {
+    if (type === TYPE_ACTION.CREATE) {
       this.setState((state)=>{ 
         return {
           show:false, 
@@ -58,7 +62,7 @@ class Home extends React.Component {
       })
     }
 
-    if (type === 'edit') {
+    if (type === TYPE_ACTION.UPDATE) {
         const indexToRemoved = listMovies.map((item) => item.id).indexOf(idItem);
         const newListMovies = this.state.listMovies.filter((_, i) => i !== indexToRemoved)
         newListMovies.splice( indexToRemoved, 0, {id: idItem, name, date, status} );
@@ -86,12 +90,12 @@ class Home extends React.Component {
       }
     })
   }
-  editItem = (item) => {
+  updateItem = (item) => {
     const {name, date, status, id} = item
     this.setState((state) => { 
       return {
         show:true, 
-        type: 'edit',
+        type: TYPE_ACTION.UPDATE,
         name,
         status,
         date,
@@ -100,8 +104,10 @@ class Home extends React.Component {
     })
   }
 
+
+
   render () {
-    const {show, name, status, date, listMovies} = this.state
+    const {show, name, status, date, listMovies, type} = this.state
     return (
       <div>
         <Header />
@@ -111,30 +117,34 @@ class Home extends React.Component {
             <div className='first'>
               <h2>Peliculas</h2>
               <button onClick={this.handleShow}>Nueva Pelicula</button>
+              {
+                type === TYPE_ACTION.CREATE ? (
+                  <RenderModal 
+                  title='Nueva Pelicula'
+                  onChange={this.handleChange}
+                  onPress={this.onPress}
+                  handleShow={this.handleShow}
+                  show={show}
+                  name={name}
+                  date={date}
+                  status={status}
 
-              <Modals show={show} onHide={this.handleShow} saveDate={this.onPress}>
-                <div>
-                  <form>
-                    <label>
-                    Nombre de Pelicula
-                      <input type='text' name='name' value={name} onChange={this.handleChange} />
-                    </label>
-                    <label>
-                    Fecha de publicación
-                      <input type='date' name='date' value={date} onChange={this.handleChange} />
-                    </label>
-                    <label>
-                    Estado
-                      <select value={status} name='status' onChange={this.handleChange}>
-                        <option value='Activo'>Activo</option>
-                        <option value='Inactivo'>Inactivo</option>
-                      </select>
-                    </label>
-                  </form>
-                </div>
-              </Modals>
+                  />
+                ): (
+                  <RenderModal 
+                  title='Editar Pelicula'
+                  onChange={this.handleChange}
+                  onPress={this.onPress}
+                  handleShow={this.handleShow}
+                  show={show}
+                  name={name}
+                  date={date}
+                  status={status}
+                  />
+                )
+              }
             </div>
-            <Table data={listMovies} handleEdit={(item) => this.editItem(item)} handleTrash={(item) => this.trashItem(item)} />
+            <Table data={listMovies} handleUpdate={(item) => this.updateItem(item)} handleTrash={(item) => this.trashItem(item)} />
           </section>
         </main>
         <Footer />

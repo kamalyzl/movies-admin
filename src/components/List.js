@@ -10,10 +10,10 @@ const List = ({ id, name, datePublic, status, onClickEdit, onClickTrash }) => {
       <td>{datePublic}</td>
       <td>{status}</td>
       <td>
-        <a href='#'>
+        <a href='#' className='table-icons'>
           <FontAwesomeIcon icon={faEdit} onClick={onClickEdit} />
         </a>
-        <a href='#'>
+        <a href='#' className='table-icons'>
           <FontAwesomeIcon icon={faTrash} onClick={onClickTrash} />
         </a>
       </td>

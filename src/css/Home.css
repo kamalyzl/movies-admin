@@ -49,4 +49,25 @@
   align-items: center;
 }
 
- 
+.form {
+  display: flex;
+  flex-direction: column;
+}
+.form input {
+  margin: 0 10px;
+  width: 60%;
+}
+
+.form select {
+  width: 60%;
+  margin: 0 10px;
+}
+
+.form label {
+  display: flex;
+  justify-content: space-between;
+}
+
+.table-icons {
+  margin: 0 20%;
+}

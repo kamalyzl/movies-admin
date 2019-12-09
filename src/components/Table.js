@@ -6,7 +6,7 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import List from './List'
 
 const id = nanoid(5)
-const Tables = ({ data, handleEdit, handleTrash }) => {
+const Tables = ({ data, handleUpdate, handleTrash }) => {
   return data.length > 0 ? (
     <div className='table-list'>
       <Table striped bordered hover responsive>
@@ -16,7 +16,7 @@ const Tables = ({ data, handleEdit, handleTrash }) => {
             <th>Nombre</th>
             <th>Fecha de publicacion</th>
             <th>Estado</th>
-            <th>.</th>
+            <th />
           </tr>
         </thead>
         <tbody>
@@ -29,7 +29,7 @@ const Tables = ({ data, handleEdit, handleTrash }) => {
                   name={item.name}
                   status={item.status}
                   datePublic={item.date}
-                  onClickEdit={() => handleEdit(item)}
+                  onClickEdit={() => handleUpdate(item)}
                   onClickTrash={() => handleTrash(item)}
                 />
               )
